@@ -1,0 +1,99 @@
+
+.info-item {
+    background-image: linear-gradient(0deg, rgba(10,10,10,0.5), rgba(10,10,10,0.6)), url("/img/fondo.jpg");  
+    border-radius: 50%; 
+    padding: 1%; 
+    text-align: center; 
+    color: #fff;
+  }
+.icon-circle {
+    width: 60px;
+    height: 60px; 
+    background-color: rgba(26, 95, 110,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+  }
+  
+  .icon-circle i {
+    font-size: 24px; 
+    color: white; 
+  }
+  .icon-text{
+    margin-top: -14%;
+  }
+  
+
+/*  Contacto  */
+
+/* Estilos para el formulario de contacto */
+#contact-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #contact-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  #contact-form label {
+    font-weight: bold;
+  }
+  
+  #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(26, 95, 110,0.8);;
+    border-radius: 4px;
+  }
+  
+  #contact-form textarea {
+    resize: vertical;
+  }
+  
+  #contact-form button {
+    background-color: rgba(26, 95, 110,0.8);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #contact-form button:hover {
+    background-color: rgba(20, 21, 21, 0.8);
+  }
+  
+  /* Estilos para los mensajes de éxito y error */
+  #success-message,
+  #error-message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  #success-message {
+    background-color: rgba(26, 95, 110,0.8);
+    color: #fff;
+    border: 1px solid rgba(26, 95, 110,0.8);
+  }
+  
+  #error-message {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #c82333;
+  }
+  
+  /* Estilos para hacer los mensajes visibles */
+  #success-message.show,
+  #error-message.show {
+    display: block;
+  }
+  
