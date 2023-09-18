@@ -1,0 +1,72 @@
+body{
+  background-image: linear-gradient(0deg, rgba(10,10,10,0.2), rgba(10,10,10,0.2)), url("/img/fondo.png"); 
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+} 
+
+h1 {
+  color: #ff8400e8;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #001f3f;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background-color: #ff8400e8;
+  margin-top: 20px;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #001f3f;
+}
+
+.rounded-circle {
+    width: 250px; 
+    height: 250px; 
+    border: 2px solid #ff8400e8; 
+}
+
+/*+++++++++++++++++++++   Matricula   ++++++++++++++++++*/
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-check-label {
+  color: #202021; 
+}
+
+
+/* +++++++++++++++++++ TABLA ++++++++++++++++++++++++  */
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #ff8400e8;
+  font-weight: bold;
+  text-align: center;
+}
+
+table tbody td.subtotal,
+table tbody td.total{
+    font-weight: bold;
+    text-align: right;
+}

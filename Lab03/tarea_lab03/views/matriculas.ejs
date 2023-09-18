@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrículas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Sistema de Matrículas</h1>
+      <hr />
+
+      <h3>Seleccione un curso:</h3>
+      <form action="/confirmacion" method="post">
+        <div class="form-group">
+          <label for="curso">Curso:</label>
+          <select class="form-control" id="curso" name="curso">
+            <option value="Java">Java</option>
+            <option value="PHP">PHP</option>
+            <option value=".NET">.NET</option>
+          </select>
+        </div>
+
+        <h3>Seleccione los módulos:</h3>
+        <div class="form-group">
+          <label>Módulos:</label>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="basico" name="modulos[]" value="Básico" />
+            <label class="form-check-label" for="basico">Básico</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="intermedio" name="modulos[]" value="Intermedio"/>
+            <label class="form-check-label" for="intermedio">Intermedio</label>
+          </div>
+          
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="avanzado" name="modulos[]" value="Avanzado" />
+            <label class="form-check-label" for="avanzado">Avanzado</label>
+          </div>
+        </div>
+
+        <h3>Seleccione el medio de pago:</h3>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="tarjeta" name="medioPago" value="Tarjeta de crédito" />
+          <label class="form-check-label" for="tarjeta">Tarjeta de crédito</label>
+        </div>
+
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="efectivo" name="medioPago" value="Pago en efectivo" />
+          <label class="form-check-label" for="efectivo"> Pago en efectivo</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary"> Confirmar Matrícula </button>
+      </form>
+    </div>
+  </body>
+</html>

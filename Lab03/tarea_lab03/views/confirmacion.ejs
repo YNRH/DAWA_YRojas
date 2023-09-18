@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Confirmación de Matrícula</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="text-center">Confirmación de Matrícula</h1>
+      <hr />
+
+      <h3>Curso seleccionado:</h3>
+      <p><strong>Curso:</strong> <%= curso %></p>
+
+      <h3>Medio de pago seleccionado:</h3>
+      <p><strong>Medio de Pago:</strong> <%= medioPago %></p>
+
+      <h3>Módulos seleccionados:</h3>
+      <ul>
+        <% modulosSeleccionados.forEach(function(modulo) { %>
+        <li><%= modulo %></li>
+        <% }); %>
+      </ul>
+
+      <h3>Detalle de la compra:</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Módulo</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% modulosSeleccionados.forEach(function(modulo) { %>
+          <tr>
+            <td><%= modulo %></td>
+            <td>S/ <%= preciosPorModulo[modulo].toFixed(2) %></td>
+          </tr>
+          <% }); %>
+          <tr>
+            <td class="subtotal">Subtotal</td>
+            <td>S/ <%= subtotal.toFixed(2) %></td>
+          </tr>
+          <tr>
+            <td class="total">Total</td>
+            <td>S/ <%= total.toFixed(2) %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>¡Su matrícula ha sido confirmada! Verifique los datos.</p>
+    </div>
+  </body>
+</html>
