@@ -26,3 +26,57 @@ h1 {
 
 /*+++++++++++++++++++++   mensaje   ++++++++++++++++++*/
 
+/* Estilos personalizados para el chat */
+.chat-container {
+  max-width: 400px;
+  margin: 0 auto;
+  border: 1px solid greenyellow;
+}
+
+.configurar-chat {
+  background-color: #0f5c4b;
+  margin: 0;
+}
+
+.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.message-left {
+  background-color: #a5eb71;
+  text-align: left;
+  margin-right: auto;
+}
+
+.message-right {
+  background-color: #e58518;
+  text-align: right;
+  color: white;
+  margin-left: auto;
+}
+.message-body {
+  word-wrap: break-word; /* Romper palabras largas */
+}
+
+#lista-mensajes {
+  height: 400px;
+}
+
+#mensaje {
+  height: 40px; /* Altura fija para el textarea */
+  position: absolute;
+  bottom: 0;
+  width: calc(
+    100% - 50px
+  ); /* El ancho del textarea es menos el ancho del botón/icono */
+  padding-right: 60px; /* Espacio a la derecha para el botón/icono */
+}
+
+.rounded-circle {
+  border: 3px solid green;
+  margin: 10px;
+  height: 70px;
+}

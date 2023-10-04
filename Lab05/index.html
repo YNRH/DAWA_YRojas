@@ -15,62 +15,7 @@
     />
 
     <link rel="stylesheet" href="/css/style.css" />
-    <style>
-      /* Estilos personalizados para el chat */
-      .chat-container {
-        max-width: 400px;
-        margin: 0 auto;
-        border: 1px solid greenyellow;
-      }
 
-      .configurar-chat {
-        background-color: #0f5c4b;
-        margin: 0;
-      }
-
-      .message {
-        padding: 10px;
-        margin: 5px;
-        border-radius: 10px;
-        max-width: 70%;
-      }
-
-      .message-left {
-        background-color: #a5eb71;
-        text-align: left;
-        margin-right: auto;
-      }
-
-      .message-right {
-        background-color: #e58518;
-        text-align: right;
-        color: white;
-        margin-left: auto;
-      }
-      .message-body {
-        word-wrap: break-word; /* Romper palabras largas */
-      }
-
-      #lista-mensajes {
-        height: 400px;
-      }
-
-      #mensaje {
-        height: 40px; /* Altura fija para el textarea */
-        position: absolute;
-        bottom: 0;
-        width: calc(
-          100% - 50px
-        ); /* El ancho del textarea es menos el ancho del botón/icono */
-        padding-right: 60px; /* Espacio a la derecha para el botón/icono */
-      }
-
-      .rounded-circle {
-        border: 3px solid green;
-        margin: 10px;
-        height: 70px;
-      }
-    </style>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       // Conexión de Socket.IO al servidor
@@ -122,11 +67,15 @@
       socket.on("chat message", function (msg) {
         var listaMensajes = document.getElementById("lista-mensajes");
         var mensaje = document.createElement("div");
-        // Comprobar si el nombre coincide con "Primer Usuario" para determinar el lado del mensaje
-        if (msg.nombre === "Primer Usuario") {
-          mensaje.className = "message message-left";
+
+        // Obtener el nombre del usuario actual ingresado en el chat
+        var nombreUsuario = document.getElementById("nombre").value;
+
+        // Comprobar si el nombre coincide con el nombre del usuario en el mensaje
+        if (msg.nombre === nombreUsuario) {
+          mensaje.className = "message message-right"; // El mensaje es del usuario actual
         } else {
-          mensaje.className = "message message-right";
+          mensaje.className = "message message-left"; // El mensaje es de otro usuario
         }
 
         // Crear el contenido del mensaje
@@ -162,7 +111,7 @@
     <div class="chat-container">
       <div class="configurar-chat row">
         <div class="form-group col-1 text-center">
-          <i class="fas fa-arrow-left" style="color: rgb(232, 232, 232);"></i>
+          <i class="fas fa-arrow-left" style="color: rgb(232, 232, 232)"></i>
         </div>
         <div class="form-group col-3">
           <input
@@ -188,16 +137,17 @@
             class="form-control"
             autocomplete="off"
           />
-          <i class="fas fa-circle" style="color: green;"></i>
+          <i class="fas fa-circle" style="color: green"></i>
           <p class="d-inline text-white">En linea</p>
         </div>
         <div class="form-group col-1 text-center">
-          <i class="fas fa-ellipsis-v" style="color: rgb(232, 232, 232);"></i>
+          <i class="fas fa-ellipsis-v" style="color: rgb(232, 232, 232)"></i>
         </div>
       </div>
 
       <div class="mensajes-chat">
-        <div id="lista-mensajes"></div><br /><br />
+        <div id="lista-mensajes"></div>
+        <br /><br />
         <div class="input-group">
           <textarea
             id="mensaje"
@@ -216,4 +166,3 @@
     </div>
   </body>
 </html>
-
