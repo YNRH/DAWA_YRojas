@@ -1,0 +1,28 @@
+body{
+  background-image: linear-gradient(0deg, rgba(10,10,10,0.2), rgba(10,10,10,0.2)), url("/img/fondo.png"); 
+}
+
+h1 {
+  color: #0f5c4b;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #0f5c4b;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #001f3f;
+}
+
+.form-group{
+  margin: auto;
+  padding: 0;
+}
+
+
+/*+++++++++++++++++++++   mensaje   ++++++++++++++++++*/
+

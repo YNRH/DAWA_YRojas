@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat con Socket.IO</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      /* Estilos personalizados para el chat */
+      .chat-container {
+        max-width: 400px;
+        margin: 0 auto;
+        border: 1px solid greenyellow;
+      }
+
+      .configurar-chat {
+        background-color: #0f5c4b;
+        margin: 0;
+      }
+
+      .message {
+        padding: 10px;
+        margin: 5px;
+        border-radius: 10px;
+        max-width: 70%;
+      }
+
+      .message-left {
+        background-color: #a5eb71;
+        text-align: left;
+        margin-right: auto;
+      }
+
+      .message-right {
+        background-color: #e58518;
+        text-align: right;
+        color: white;
+        margin-left: auto;
+      }
+      .message-body {
+        word-wrap: break-word; /* Romper palabras largas */
+      }
+
+      #lista-mensajes {
+        height: 400px;
+      }
+
+      #mensaje {
+        height: 40px; /* Altura fija para el textarea */
+        position: absolute;
+        bottom: 0;
+        width: calc(
+          100% - 50px
+        ); /* El ancho del textarea es menos el ancho del botón/icono */
+        padding-right: 60px; /* Espacio a la derecha para el botón/icono */
+      }
+
+      .rounded-circle {
+        border: 3px solid green;
+        margin: 10px;
+        height: 70px;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // Conexión de Socket.IO al servidor
+      var socket = io();
+      var esPrimerUsuario = true; // Variable para rastrear si es el primer usuario
+
+      function mostrarImagenPreview(imagen, previewId) {
+        var imgPreview = document.getElementById(previewId);
+        if (imagen) {
+          imgPreview.style.display = "block";
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            imgPreview.src = e.target.result;
+          };
+          reader.readAsDataURL(imagen);
+        } else {
+          imgPreview.style.display = "none";
+          imgPreview.src = "";
+        }
+      }
+
+      // Función para enviar mensajes
+      function enviarMensaje() {
+        var nombre = document.getElementById("nombre").value;
+        var mensaje = document.getElementById("mensaje").value;
+        var imagen = document.getElementById("imagen").files[0]; // Obtener la imagen seleccionada
+        var hora = obtenerHoraActual();
+        // Comprobar si se seleccionó una nueva imagen o mantener la imagen por defecto
+        var imagenPorDefecto = "/img/perfil.png"; // Ruta de la imagen por defecto
+        if (!imagen) {
+          imagen = imagenPorDefecto;
+        }
+        // Emitir un objeto que contenga el nombre, mensaje, imagen, hora y lado
+        socket.emit("chat message", { nombre, mensaje, imagen, hora });
+        document.getElementById("mensaje").value = "";
+        // Mostrar la imagen seleccionada en el formulario
+        mostrarImagenPreview(imagen, "imagen-preview");
+        return false;
+      }
+
+      function obtenerHoraActual() {
+        var ahora = new Date();
+        var hora = ahora.getHours();
+        var minuto = ahora.getMinutes();
+        return hora + ":" + (minuto < 10 ? "0" : "") + minuto;
+      }
+
+      // Función para recibir mensajes
+      socket.on("chat message", function (msg) {
+        var listaMensajes = document.getElementById("lista-mensajes");
+        var mensaje = document.createElement("div");
+        // Comprobar si el nombre coincide con "Primer Usuario" para determinar el lado del mensaje
+        if (msg.nombre === "Primer Usuario") {
+          mensaje.className = "message message-left";
+        } else {
+          mensaje.className = "message message-right";
+        }
+
+        // Crear el contenido del mensaje
+        var mensajeContenido = document.createElement("div");
+        mensajeContenido.className = "message-body";
+        mensajeContenido.innerHTML = msg.mensaje;
+
+        // Crear la hora del mensaje
+        var mensajeHora = document.createElement("div");
+        mensajeHora.className = "message-time";
+        mensajeHora.textContent = msg.hora;
+
+        // Adjuntar contenido al mensaje
+        mensaje.appendChild(mensajeContenido);
+        mensaje.appendChild(mensajeHora);
+
+        // Agregar el mensaje a la lista de mensajes
+        listaMensajes.appendChild(mensaje);
+
+        // Desplazarse al último mensaje
+        listaMensajes.scrollTop = listaMensajes.scrollHeight;
+      });
+
+      // Detectar automáticamente si el usuario es el primer o segundo usuario según el nombre
+      document.getElementById("nombre").addEventListener("input", function () {
+        var nombre = this.value;
+        esPrimerUsuario = nombre === "Primer Usuario";
+      });
+    </script>
+  </head>
+  <body>
+    <h1 class="col">Chat</h1>
+    <div class="chat-container">
+      <div class="configurar-chat row">
+        <div class="form-group col-1 text-center">
+          <i class="fas fa-arrow-left" style="color: rgb(232, 232, 232);"></i>
+        </div>
+        <div class="form-group col-3">
+          <input
+            type="file"
+            id="imagen"
+            accept="image/*"
+            style="display: none"
+            onchange="mostrarImagenPreview(this.files[0], 'imagen-preview');"
+          />
+          <img
+            class="rounded-circle"
+            id="imagen-preview"
+            src="/img/perfil.png"
+            alt="Imagen de perfil"
+            style="cursor: pointer"
+            onclick="document.getElementById('imagen').click();"
+          />
+        </div>
+        <div class="form-group col-7">
+          <input
+            id="nombre"
+            placeholder="Tu nombre"
+            class="form-control"
+            autocomplete="off"
+          />
+          <i class="fas fa-circle" style="color: green;"></i>
+          <p class="d-inline text-white">En linea</p>
+        </div>
+        <div class="form-group col-1 text-center">
+          <i class="fas fa-ellipsis-v" style="color: rgb(232, 232, 232);"></i>
+        </div>
+      </div>
+
+      <div class="mensajes-chat">
+        <div id="lista-mensajes"></div><br /><br />
+        <div class="input-group">
+          <textarea
+            id="mensaje"
+            placeholder="Escribe un mensaje"
+            class="form-control"
+            autocomplete="off"
+          ></textarea>
+          <div class="input-group-append ml-auto">
+            <button onclick="enviarMensaje()" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+              <!-- Icono de avión de papel -->
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
