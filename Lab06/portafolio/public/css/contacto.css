@@ -1,0 +1,43 @@
+body {
+    background-color: #2a2a2a; /* Fondo gris */
+  }
+
+  .container {
+    margin-top: 40px; /* Espacio superior */
+    
+  }
+
+  .center-vertically {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+  }
+
+  .center-icons {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente los iconos */
+  }
+
+  .social-icons a {
+    margin: 12px;
+    color: #7308a4;
+  }
+  .lado-izq{
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2); /* Sombreado */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 20px;
+    height: 300px;
+    padding: 80px;
+    background-color: rgba(255, 255, 255, 0.834);
+  }
+  .lado-der{
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2); /* Sombreado */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 20px;
+    height: 500px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.834);
+  }
+  .btn{
+    background-color: #7308a4;
+    color: aliceblue;
+  }

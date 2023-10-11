@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Perfiles</title>
+    <!-- Agrega enlaces a los archivos de Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Menú de navegación de Bootstrap -->
+    <%- include('header') %>
+
+    <!-- Muestra la lista de perfiles de manera dinámica -->
+    <div class="container">
+      <div class="row">
+        <!-- Lista de perfiles -->
+        <div class="col-9">
+          <h2>Perfiles</h2><br><br>
+          <div class="row">
+            <% profileData.forEach((perfil) => { %>
+            <div class="col profile" data-category="<%= perfil.serviceCategory %>">
+              <a href="/perfil/<%= perfil.id %>"> <!-- Agrega enlace al perfil -->
+                <img src="<%= perfil.profileImage %>" class="profile-image" alt="Imagen de perfil">
+                <p class="profile-name"><%= perfil.profileName %></p>
+              </a>
+              <div class="social-icons">
+                <a href="<%= perfil.facebookLink %>"
+                  ><i class="fab fa-facebook"></i
+                ></a>
+                <a href="<%= perfil.twitterLink %>"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="<%= perfil.instagramLink %>"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+              </div>
+            </div>
+            <% }); %>
+          </div>
+        </div>
+        <!-- Columna para las categorías -->
+        <div class="col-3">
+          <h4>Filtrar por Categoría</h4>
+          <select id="categoryFilter" class="form-control">
+            <option value="all">Todas</option>
+            <% profileData.forEach((perfil) => { %>
+            <option value="<%= perfil.serviceCategory %>">
+              <%= perfil.serviceCategory %>
+            </option>
+            <% }); %>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Cuando se cambia la selección en la lista desplegable
+        $("#categoryFilter").on("change", function () {
+          const selectedCategory = $(this).val();
+          filterProfiles(selectedCategory);
+        });
+
+        function filterProfiles(category) {
+          $(".profile").hide(); // Oculta todos los perfiles
+
+          if (category === "all") {
+            // Mostrar todos los perfiles si se selecciona "Todas"
+            $(".profile").show();
+          } else {
+            // Mostrar perfiles de la categoría seleccionada
+            $(`.profile[data-category="${category}"]`).show();
+          }
+        }
+
+        // Inicialmente muestra todos los perfiles
+        filterProfiles("all");
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

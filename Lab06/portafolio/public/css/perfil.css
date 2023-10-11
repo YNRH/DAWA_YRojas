@@ -1,0 +1,99 @@
+/* Estilos generales */
+body {
+    background-color: #2a2a2a; /* Fondo gris */
+  }
+  
+  .container {
+    padding: 20px;
+    margin-top: 60px;
+  }
+  
+  .profile-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-left {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .profile-right {
+    flex: 1;
+  }
+  
+  .profile-image img {
+    border-radius: 50%; /* Hace que la imagen de perfil sea circular */
+    width: 150px;
+    height: 150px;
+    border: 5px solid #fff; /* Borde blanco */
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #b7b7b8;
+    font-weight: bold;
+  }
+  
+  .social-icons a {
+    font-size: 24px;
+    margin: 5px;
+    color: #b7b7b8; /* Color azul para los iconos de redes sociales */
+    text-decoration: none;
+  }
+  
+  /* Estilos de las skills estilo neon (ajustar colores según tus preferencias) */
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  
+  .skill {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .neon-1 {
+    background-color: #ff00ff; /* Color neon 1 */
+    box-shadow: 0 0 10px #ff00ff; /* Sombra neon */
+  }
+  
+  .neon-2 {
+    background-color: #00ff00; /* Color neon 2 */
+    box-shadow: 0 0 10px #00ff00; /* Sombra neon */
+  }
+  
+  .neon-3 {
+    background-color: #00ffff; /* Color neon 3 */
+    box-shadow: 0 0 10px #00ffff; /* Sombra neon */
+  }
+
+  .neon-4 {
+    background-color: #ad14f9; /* Color neon 4 */
+    box-shadow: 0 0 10px #ad14f9; /* Sombra neon */
+  }
+  .neon-5 {
+    background-color: #eee600; /* Color neon 4 */
+    box-shadow: 0 0 10px #eee600; /* Sombra neon */
+  }
+  
+  /* Agrega más estilos neon según sea necesario */
+  
+  
+  .fixed-button {
+    position: fixed;
+    bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+    left: 20px; /* Ajusta la distancia desde la izquierda */
+    color: rgba(249, 244, 253, 0.911);
+    background-color: blueviolet;
+  }
