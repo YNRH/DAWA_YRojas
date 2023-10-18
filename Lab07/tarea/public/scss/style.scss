@@ -1,0 +1,139 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+// ******* Conteiner  *******
+.container{
+  padding: 50px;
+  background-color: #333;
+  color: #fff;
+}
+
+h1{
+  border-bottom: 1px solid #bde6196d;
+}
+.row{
+  margin: 0;
+  padding: 0;
+}
+
+.btnAdd i{
+  background-color: #bde6196d;
+  margin: 12px;
+}
+/* Estilos para el reproductor de audio personalizado */
+audio {
+  border: 1px solid #faf4f4;
+  border-radius: 50px;
+  height: 40px;
+  width: 80%;
+  opacity: 0.2;
+}
+audio:hover{
+  opacity: 0.6;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-pause-button {
+  background-color: #bde6196d;
+  border-radius: 50%;
+}
+/* Agregar sombra a los botones cuando el cursor pasa por encima */
+audio::-webkit-media-controls-play-button:hover,
+audio::-webkit-media-controls-pause-button:hover,
+audio::-webkit-media-controls-mute-button:hover {
+  background-color: #19e6a56d;
+}
+
+/* Estilos para los controles del reproductor */
+audio::-webkit-media-controls {
+  background-color: #292929a6;
+  border-radius: 50px;
+  padding: 1px;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  width: 50px;
+}
+
+audio::-webkit-media-controls-mute-button {
+  background-color: #bde6196d;
+  border-radius: 50%;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++ */
+
+.background-image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 380px;
+  margin: 2%;
+  border-radius: 5%;
+}
+
+.background-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.378);
+  mask-image: radial-gradient(circle, transparent 0, transparent 50%, white 60%, white 98%);
+  mask-size: contain;
+  border-radius: 5%;
+}
+
+// ********************  ICON CONTEINER  *******************
+
+.icon-container{
+  opacity: 0.3;
+}
+.icon-container:hover {
+  opacity: 1;
+}
+.icon-container i{
+  color: #bde6196d;
+}
+.icon-container i:hover {
+  transform: scale(1.6);
+  transition: opacity 0.3s;
+  box-shadow: 2px 2px 5px rgb(0, 0, 0);
+  color: #19a2e69e;
+}
+
+// **********  title *****
+.song-title{
+  color: rgba(18, 18, 18, 0.747);
+  text-shadow: 4px 2px 4px rgb(255, 255, 255);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+// ********* CREATE *********
+
+.fondo {
+  background-color: #333;
+  color: #fff;
+  height: 100%;
+}
+
+.form-label {
+  color: #fff;
+}
+
+.form-control {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* Estilos para el botón de guardar */
+.btn-save {
+  background-color: #bde6196d;
+  color: #fff;
+}
+.btn-save:hover {
+  background-color: #19e6a56d;
+  color: #fff;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de Canciones</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/1daf3aa6c6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Music List</h1>
+      <a href="/music/new" class="btn btn-success btnAdd">
+        <i class="fa-solid fa-square-plus fa-beat fa-2xl"></i>
+      </a>
+      <div class="row">
+        <% music.forEach(function(song) { %>
+        <div
+          class="d-inline background-image d-flex flex-column justify-content-end"
+          style="background-image: url('<%= song.imageFilePath %>')"
+        >
+          <div class="">
+            <h5 class="card-title song-title text-center"><%= song.title %></h5>
+            <div class="text-center audio-player">
+              <audio controls>
+                <source src="<%= song.audioFilePath %>" type="audio/mpeg" />
+              </audio>
+            </div>
+            <div class="text-center action-buttons icon-container mt-auto">
+              <form
+                method="post"
+                action="/music/<%= song._id %>?_method=DELETE"
+                class="d-inline"
+              >
+                <button type="submit" class="btn">
+                  <i class="fa-solid fa-trash fa-lg"></i>
+                </button>
+              </form>
+              <a href="/music/<%= song._id %>" class="btn d-inline">
+                <i class="fa-solid fa-pen-to-square fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>
